@@ -51,7 +51,7 @@ def formula(user_follows_opinion, total_followers_opinion, metadata):
     return score
 
 
-def user_preferences(follows, metadata):
+def user_preferences(follows, metadata, normalized=False):
     """
     Calculate the preference score for each of the opinions.
     
@@ -68,7 +68,7 @@ def user_preferences(follows, metadata):
             }
     
     Return:
-        {deal, no_deal, remain}:    {float, float, float}    Returns deict of normalized preference score for the 3 opinions.
+        {deal, no_deal, remain}:    {float, float, float}    Returns dict of normalized preference score for the 3 opinions.
     """
     follows = set(follows)
     politicians_deal = {595416920, 2797521996, 211994193, 160952087, 810372954, 2653613168, 747807250819981312}
@@ -108,10 +108,11 @@ def user_preferences(follows, metadata):
 #     print("score_remain:\t{}".format(score_remain))
     
     # normalize
-    # score_total = score_deal + score_no_deal + score_remain
-    # score_deal_n = score_deal / score_total
-    # score_no_deal_n = score_no_deal / score_total
-    # score_remain_n = score_remain / score_total
+    if normalized:
+        score_total = score_deal + score_no_deal + score_remain
+        score_deal = score_deal / score_total
+        score_no_deal = score_no_deal / score_total
+        score_remain = score_remain / score_total
     
 #     print("normalized: deal={}\tno_deal={}\tremain={}".format(score_deal_n, score_no_deal_n, score_remain_n))
     return {
@@ -145,7 +146,8 @@ def calc_preferences(data, metadata):
         scores = user_preferences(follows_array, metadata)
         scored_users[user_id] = scores
         counter += 1
-    
+    print("progress: 100%")
+
     return scored_users
 
 
@@ -163,7 +165,7 @@ def calc_and_save_preference_scores(data_file_name):
     #     240958912: [460401829, 2797521996, 19397942, 761499948890329088],
     # }
     
-    metadata = readFromFile('metadata')
+    metadata = readFromFile('followers_metadata.pkl')
     scored_users_array = calc_preferences(data, metadata)
     saveToFile(file_name='scored_users_not_norm', data=scored_users_array)
     
