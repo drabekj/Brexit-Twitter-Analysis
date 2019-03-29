@@ -56,11 +56,6 @@ Input:
 Output:
   - based on previous choice reads file [analyzed_tweets_deal.pkl|analyzed_tweets_no_deal.pkl|analyzed_tweets_remain.pkl]
 
-What does it do?
-- Queries the IBM watson for the selected subset of tweets, one by one (tweets are provided form input file)
-- Saves keyword analysis as list of lists of keyword_analysis objects into a file [analyzed_tweets_deal.pkl|analyzed_tweets_no_deal.pkl|analyzed_tweets_remain.pkl]
-
-
 ### 3) run 2_3_structure_and_save_keyword_analysis_to_csv.py
 Input:
 - MANUALLY:
