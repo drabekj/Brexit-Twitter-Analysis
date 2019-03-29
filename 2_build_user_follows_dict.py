@@ -4,7 +4,7 @@ import pickle
 
 def read_pickles():
     users=[]
-    for fi in os.listdir(r"../data/followers"):
+    for fi in os.listdir(r"./data/followers"):
         users.extend(readFromFile(fi))
     
     return list(set(users))
@@ -20,7 +20,7 @@ def readFromFile(file_name):
         list(user_id: int)    Array of integers, which are the followers of the account defined in parameter.
     """
     
-    with open(r"../data/followers" + "//" + file_name, 'rb') as f:
+    with open(r"./data/followers" + "//" + file_name, 'rb') as f:
         data = pickle.load(f)
 
     return data
@@ -32,7 +32,7 @@ def saveToFile(data):
     Saves data using pickle to file. File name: {politician_id}.pkl
 
     """
-    PATH = "../data"
+    PATH = "./data"
     file_name = "{}/user_follows_politicians_dict.pkl".format(PATH)
 
     with open(file_name, 'wb') as f:
@@ -46,7 +46,7 @@ def merge_followers(users):
     """
     result={}    
     pol_followers={} # dictionary key={file_name} value={list of followers}
-    for fi in os.listdir(r"../data/followers"):
+    for fi in os.listdir(r"./data/followers"):
         pol_followers[os.path.splitext(fi)[0]]=set(readFromFile(fi))
     
     print("~~~ start looking through sets")

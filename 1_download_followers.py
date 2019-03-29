@@ -20,7 +20,7 @@ def saveToFile(politician_id, data):
     Args:
         politician_id: int    user_id of the account to get the followers list for.
     """
-    PATH = "../data/followers"
+    PATH = "./data/followers"
     file_name = "{}/{}.pkl".format(PATH,politician_id)
 
     os.makedirs(os.path.dirname(file_name), exist_ok=True)
