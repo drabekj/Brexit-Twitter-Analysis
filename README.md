@@ -32,11 +32,10 @@ Calculates the preferences score towards opinion on the Brexit situation: Deal, 
 ## Keyword Analysis (Sentiment Analysis)
 How to run the scripts
 ### 1) run 2_1_prepare_tweets_for_sentiment_analysis.py -o [deal|no_deal|remain]
-Input:
-- argument -o [deal|no_deal|remain]
-- "scored_users_not_norm.pkl"
-Output:
-- file with relevant tweets for each opinion: "deal_tweets.pkl", "no_deal_tweets.pkl", "remain_tweets.pkl"
+- INPUT: argument -o [deal|no_deal|remain]
+  - "scored_users_not_norm.pkl"
+- OUTPUT:
+  - file with relevant tweets for each opinion: "deal_tweets.pkl", "no_deal_tweets.pkl", "remain_tweets.pkl"
 
 What does it do?
 - !!! this scipt should be run 3 times (once for every opinion category deal|no_deal|remain)
@@ -48,13 +47,10 @@ What does it do?
 - saves into a pockeled file "deal_tweets.pkl", "no_deal_tweets.pkl", "remain_tweets.pkl"
 
 ### 2) run 2_2_analyze_tweets_for_keywords.py
-Input:
-- MANUALLY:
-  - change the variable 'opinion_to_analyze' to one of [deal|no_deal|remain]
+- INPUT: argument -o [deal|no_deal|remain]
+  - based on previous choice reads file [deal_tweets.pkl|no_deal_tweets.pkl|remain_tweets.pkl]
   - subset variable (if you don't want to run the analysis on all the tweets)
-- based on previous choice reads file [deal_tweets.pkl|no_deal_tweets.pkl|remain_tweets.pkl]
-Output:
-  - based on previous choice reads file [analyzed_tweets_deal.pkl|analyzed_tweets_no_deal.pkl|analyzed_tweets_remain.pkl]
+- OUTPUT: based on previous choice reads file [analyzed_tweets_deal.pkl|analyzed_tweets_no_deal.pkl|analyzed_tweets_remain.pkl]
 
 ### 3) run 2_3_structure_and_save_keyword_analysis_to_csv.py
 Input:
