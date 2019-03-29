@@ -80,7 +80,7 @@ parser.add_argument("-id", "--politician_id", dest="id",
 args = parser.parse_args()
 
 if args.id == None:
-    print("You need to provide politician twitter id.\nUSAGE: downloadPfollowers.py -id {politician_id}")
+    print("You need to provide politician twitter id.\nUSAGE: download_followers.py -id {politician_id}")
 else:
     get_followers(args.id)
 
